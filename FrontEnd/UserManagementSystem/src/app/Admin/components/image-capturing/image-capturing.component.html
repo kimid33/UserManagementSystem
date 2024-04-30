@@ -1,0 +1,12 @@
+
+<!-- image-capture.component.html -->
+
+<div>
+    <video #video autoplay></video>
+    <canvas #canvas style="display:none;"></canvas>
+    <button (click)="capture()">Capture Image</button>
+  </div>
+  
+  <div *ngIf="imageUrl">
+    <img [src]="imageUrl" alt="Captured Image">
+  </div>

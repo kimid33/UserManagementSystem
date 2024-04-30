@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration and Login Page</title>
+  <link rel="stylesheet" href="C:\AssignmentForAngular\Html\FrontEnd\UserManagementSystem\src\styles.css">
+</head>
+<body>
+  <div class="container" >
+    <div class="left-panel">
+      <h2>Welcome Back!</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="loginHandle()">
+        <input type="email" name="email" placeholder="Email" required
+        formControlName="email"
+
+        >
+        <div class="formgroup">
+        <div *ngIf="email">
+            <small *ngIf="email.errors?.['required'] && email.touched" class="text-danger">This
+                Field Is Requierd</small>
+            <small *ngIf="email.errors?.['email'] && email.dirty" class="text-danger">invalid
+                email or</small>
+            <small *ngIf="email.errors?.['pattern'] && email.dirty" class="text-danger"> email
+                format is wrong</small>
+        </div>
+        <input type="password" name="password" placeholder="Password" required
+        formControlName="password"
+       
+        >
+        <br>
+        <div *ngIf="password">
+            <small class="text-danger"
+                *ngIf="password.errors?.['required'] && password.touched">This Field Is
+                Requierd</small>
+            <small class="text-danger" *ngIf="password.errors?.['pattern']">Password must
+                contain at least one number, one uppercase and a lowercase letter
+                and at least 8 characters</small>
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </div>
+      </form>
+    </div>
+    <!-- <div class="right-panel">
+      <h2>Create an Account</h2>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+      </form>
+    </div> -->
+  </div>
+</body>
+</html>
